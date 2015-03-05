@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  gross_income: 9.99
+  release_date: 2015-03-05
+  mpaa_rating: MyString
+  description: MyString
+
+two:
+  title: MyString
+  gross_income: 9.99
+  release_date: 2015-03-05
+  mpaa_rating: MyString
+  description: MyString

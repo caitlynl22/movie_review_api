@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :review do
-    user Faker::Name.name
+    sequence :user do |n|
+      "user#{n}"
+    end
     body Faker::Lorem.paragraphs(2)
     rating 1
     movie

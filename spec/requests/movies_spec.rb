@@ -27,4 +27,30 @@ describe 'GET Requests' do
       expect(movie['title']).to eq @movie.title
     end
   end
+
+  describe 'PUT requests' do
+    describe '#update' do
+      it 'should update a single movie' do
+        @movie = @movies.first
+        put "/movies/#{@movie.id}",
+        { movie: {
+          title: "The Avengers",
+          gross_income: 0,
+          release_date: '05/04/2012',
+          mpaa_rating: 'PG-13',
+          description: "A movie about superheroes."
+          }
+        }.to_json,
+        { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s }
+
+        expect(response).to be_success
+        expect(response.content_type).to be Mime::JSON
+
+        movie = JSON.parse(response.body)
+        expect(movie['title']).to eq "The Avengers"
+      end
+    end
+  end
 end
+
+

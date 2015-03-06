@@ -5,7 +5,7 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 
 describe 'reviews management' do
-  before :each do
+  before(:all) do
     DatabaseCleaner.clean
     @movies = FactoryGirl.create_list(:movie, 25)
     @reviews = FactoryGirl.create_list(:review, 15)

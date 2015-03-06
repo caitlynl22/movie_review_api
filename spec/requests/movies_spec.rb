@@ -1,9 +1,12 @@
 require 'pry-byebug'
 require 'rails_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 describe 'GET Requests' do
   before(:all) do
-    Movie.destroy_all
+    DatabaseCleaner.clean
     @movies = FactoryGirl.create_list(:movie, 25)
   end
   describe '#index' do

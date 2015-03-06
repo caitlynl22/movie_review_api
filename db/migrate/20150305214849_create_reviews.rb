@@ -4,8 +4,10 @@ class CreateReviews < ActiveRecord::Migration
       t.string :user
       t.string :body
       t.integer :rating
+      t.belongs_to :movie, index: true
 
       t.timestamps null: false
     end
+    add_foreign_key :reviews, :movies
   end
 end

@@ -23,4 +23,11 @@ describe 'reviews management' do
       expect(response).to be_success
       expect(response.content_type).to be Mime::JSON
     end
+
+  it "destroys the review" do
+    review = @reviews.first
+    delete "/admin/reviews/#{review.id}"
+    expect(response.status).to eq 204
+  end
+
 end

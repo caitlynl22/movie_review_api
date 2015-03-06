@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '', to: 'reviews#update', as: '/'
     resources :reviews, only: [:update, :destroy]
   end
 end

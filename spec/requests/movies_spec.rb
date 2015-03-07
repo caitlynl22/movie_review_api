@@ -29,6 +29,25 @@ describe 'GET Requests' do
   end
 
   describe 'PUT requests' do
+    describe '#create' do
+      it 'should create a new movie' do
+        post '/movies',
+        { movie: {
+          title: "Sheep",
+          gross_income: 500,
+          release_date: '01/23/2011',
+          mpaa_rating: 'R',
+          description: "Three hours of sheep eating grass."
+          }
+        }.to_json,
+        { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s }
+        expect(response).to be_success
+        expect(response.content_type).to be Mime::JSON
+        movie = JSON.parse(response.body)
+        expect(movie["title"]).to eq "Sheep"
+      end
+    end
+
     describe '#update' do
       it 'should update a single movie' do
         @movie = @movies.first

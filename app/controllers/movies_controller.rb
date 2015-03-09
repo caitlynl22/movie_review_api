@@ -6,14 +6,12 @@ class MoviesController < ApplicationController
   end
 
   def show
-    #@movie = Movie.find(params[:id])
     title = params[:id]
     @movie = Omdb::Api.new.search(title)
     render json: @movie, status: 200
   end
 
   def update
-    #@movie = Movie.find(params[:id])
     title = params[:id]
     @movie = Omdb::Api.new.search(title)
     if @movie.update(movie_params)

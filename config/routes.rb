@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
-end
+
 
   namespace :admin do
     resources :reviews, only: [:update, :destroy]

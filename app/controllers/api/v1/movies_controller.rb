@@ -1,3 +1,4 @@
+
 module Api
   module V1
     class MoviesController < ApplicationController
@@ -9,15 +10,13 @@ module Api
 
       def show
         @movie = Movie.find(params[:id])
-        # title = params[:id]
-        # @movie = Omdb::Api.new.search(title)
         render json: @movie, status: 200
       end
 
       def create
         @movie = Movie.new(movie_params)
         if @movie.save
-          render json: @movie, status: :created, location: @movie
+          render json: @movie, status: :created
         else
           render json: @movie.errors, status: :unprocessable_entity
         end
@@ -25,8 +24,6 @@ module Api
 
       def update
         @movie = Movie.find(params[:id])
-        # title = params[:id]
-        # @movie = Omdb::Api.new.search(title)
         if @movie.update(movie_params)
           render json: @movie, status: 200
         else
